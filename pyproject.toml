@@ -1,0 +1,158 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dismoji"
+dynamic = ["version", "urls", "readme"]
+description = "***"
+authors = [
+    { name = "Paillat-dev", email = "me@paillat.dev" }
+]
+license = "MIT"
+requires-python = "==3.12.*"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.9",
+    "Typing :: Typed",
+    "Operating System :: OS Independent",
+]
+keywords = ["discord", "bot", "emojis", "emoji"]
+dependencies = [
+    "json5>=0.12.0",
+]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.28.1",
+    "pytest>=8.3.5",
+    "python-dotenv>=1.0.1",
+    "ruff>=0.9.9",
+]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/dismoji/_version.py"
+
+[tool.hatch.metadata.hooks.vcs.urls]
+Homepage = "https://github.com/Paillat-dev/dismoji"
+source_archive = "https://github.com/Paillat-dev/dismoji/archive/{commit_hash}.zip"
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/markdown"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-after = "<!-- badges -->\n"
+end-before = "\n<!-- end badges -->"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = "\n\n---\n"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-after = "## Overview\n"
+end-before = "\n## Installation"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-after = "<!-- quick-start -->"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
+replacement = '[\1](https://github.com/Paillat-dev/dismoji/tree/main\g<2>)'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]'
+replacement = '**\1**:'
+
+[tool.hatchling]
+name = "dismoji"
+
+[tool.hatch.build]
+include = [
+    "src/dismoji/",
+    "src/dismoji/raw/build/emojis.json",
+]
+exclude = [
+    ".copywrite.hcl",
+    ".github",
+    ".python-version",
+    "uv.lock",
+    "src/dismoji/raw/*.*",
+    "src/dismoji/raw/.*/",
+    "src/dismoji/raw/src/"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dismoji"]
+
+[tool.pyright]
+pythonVersion = "3.9"
+typeCheckingMode = "all"
+reportUnusedCallResult = false
+reportAny = false
+executionEnvironments = [
+    { root = "src/dismoji/_version.py", reportDeprecated = false },
+    { root = "examples", reportExplicitAny = false, reportUnknownMemberType = false, reportUnusedParameter = false, reportImplicitOverride = false }
+]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+exclude = [
+    "src/dismoji/_version.py"
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+per-file-ignores = { "examples/**/*" = ["INP001", "ARG002", "T201"], "tests/**/*" = ["S101"], "src/dismoji/_version.py" = ["I001", "Q000", "UP005", "UP006", "UP035"] }
+extend-ignore = [
+    "N999",
+    "D104",
+    "D100",
+    "D103",
+    "D102",
+    "D101",
+    "D107",
+    "D105",
+    "D106",
+    "ANN401",
+    "TRY003",
+    "EM101",
+    "EM102",
+    "G004",
+    "PTH",
+    "D211",
+    "D213",
+    "COM812",
+    "ISC001",
+    "D203",
+    "FBT001",
+    "FBT002",
+    "PLR2004",
+    "PLR0913",
+    "C901",
+    "ISC003" # conflicts with basedpyright reportImplicitStringConcatenation
+]
+
+[tool.uv.sources]
+py-cord = { git = "https://github.com/Pycord-Development/pycord", rev = "c0c0b7c58f7b489983a159f5e0eea2c0dab0b0c8" }

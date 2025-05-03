@@ -1,0 +1,3 @@
+[submodule "src/dismoji/raw"]
+	path = src/dismoji/raw
+	url = git@github.com:Paillat-dev/discord-emojis.git
