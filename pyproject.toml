@@ -25,9 +25,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 keywords = ["discord", "bot", "emojis", "emoji"]
-dependencies = [
-    "json5>=0.12.0",
-]
+dependencies = []
 
 [dependency-groups]
 dev = [
