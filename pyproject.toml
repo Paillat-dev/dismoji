@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "dismoji"
 dynamic = ["version", "urls", "readme"]
-description = "***"
+description = "A Python library for converting Discord emoji names to their Unicode equivalents."
 authors = [
     { name = "Paillat-dev", email = "me@paillat.dev" }
 ]
