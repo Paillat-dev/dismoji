@@ -41,3 +41,30 @@ def test_multiple_emojis() -> None:
 def test_complex_sentence() -> None:
     """Test emojize function with a complex sentence."""
     assert emojize("Hello :wave:, what's up? :smile: :white_check_mark: :smile:") == "Hello 👋, what's up? 😄 ✅ 😄"
+
+
+def test_spaces() -> None:
+    """Test emojize function with spaces."""
+    space_tests = [
+        ("Hello :smile::smile:", "Hello 😄😄"),
+        ("Hii what's up :wave:?", "Hii what's up 👋?"),
+        ("Hello:wave: :smile:", "Hello👋 😄"),
+        ("Hellooo :wave:hru?", "Hellooo 👋hru?"),
+        ("Hii:wave:hru?", "Hii👋hru?"),
+    ]
+    for input_str, expected_output in space_tests:
+        assert emojize(input_str) == expected_output
+
+
+def test_emoji_with_special_characters() -> None:
+    """Test emojize function with special characters."""
+    special_char_tests = [
+        ("Hello :smile:!", "Hello 😄!"),
+        ("Hello :smile:?", "Hello 😄?"),
+        ("Hello :smile::smile:!", "Hello 😄😄!"),
+        ("Hello :smile::smile:?", "Hello 😄😄?"),
+        ("Hello :smile::smile::smile:!", "Hello 😄😄😄!"),
+        ("Hello :smile::smile::smile:?", "Hello 😄😄😄?"),
+    ]
+    for input_str, expected_output in special_char_tests:
+        assert emojize(input_str) == expected_output
