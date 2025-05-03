@@ -30,7 +30,7 @@ A Python library for converting Discord emoji names to their Unicode equivalents
 
 ## Overview
 
-dismoji is a lightweight Python library that provides a simple way to convert Discord
+Dismoji is a lightweight Python library that provides a simple way to convert Discord
 emoji names to their Unicode equivalents. With just a single function call, you can
 transform text containing Discord-style emoji codes (like `:smile:`) into text with
 actual Unicode emoji characters (like "😄").
