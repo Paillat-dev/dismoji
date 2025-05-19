@@ -14,6 +14,8 @@ with EMOJIS_PATH.open("r", encoding="utf-8") as f:
 
 EMOJI_MAPPING: dict[str, str] = {k: EMOJIS["emojis"][v]["surrogates"] for k, v in EMOJIS["nameToEmoji"].items()}
 
+del EMOJIS  # Clean up to save memory
+
 EMOJI_PATTERN = re.compile(r":([a-zA-Z0-9_-]+):")
 
 
