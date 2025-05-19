@@ -120,6 +120,7 @@ exclude = [
     "src/dismoji/_version.py"
 ]
 
+
 [tool.ruff.lint]
 select = ["ALL"]
 per-file-ignores = { "examples/**/*" = ["INP001", "ARG002", "T201"], "tests/**/*" = ["S101"], "src/dismoji/_version.py" = ["I001", "Q000", "UP005", "UP006", "UP035"] }
@@ -151,6 +152,7 @@ extend-ignore = [
     "C901",
     "ISC003" # conflicts with basedpyright reportImplicitStringConcatenation
 ]
+pydocstyle.convention = "google"
 
 [tool.uv.sources]
 py-cord = { git = "https://github.com/Pycord-Development/pycord", rev = "c0c0b7c58f7b489983a159f5e0eea2c0dab0b0c8" }
