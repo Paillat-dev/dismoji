@@ -30,6 +30,13 @@ EMOJI_PATTERN = re.compile(r":([a-zA-Z0-9_-]+):")
 EMOJI_CHARS_PATTERN = re.compile("|".join(map(re.escape, REVERSE_EMOJI_MAPPING.keys())))
 
 
+def _replace(match: re.Match[str]) -> str:
+    emoji_name = match.group(1)
+    if emoji_name in EMOJI_MAPPING:
+        return EMOJI_MAPPING[emoji_name]
+    return match.group(0)
+
+
 def emojize(s: str) -> str:
     """Convert a string with emoji names to a string with emoji characters.
 
@@ -40,14 +47,12 @@ def emojize(s: str) -> str:
         str: The input string with emoji names replaced by emoji characters.
 
     """
+    return EMOJI_PATTERN.sub(_replace, s)
 
-    def replace(match: re.Match[str]) -> str:
-        emoji_name = match.group(1)
-        if emoji_name in EMOJI_MAPPING:
-            return EMOJI_MAPPING[emoji_name]
-        return match.group(0)
 
-    return EMOJI_PATTERN.sub(replace, s)
+def _reverse_replace(match: re.Match[str]) -> str:
+    emoji = match.group(0)
+    return f":{REVERSE_EMOJI_MAPPING[emoji]}:"
 
 
 def demojize(s: str) -> str:
@@ -60,12 +65,7 @@ def demojize(s: str) -> str:
         str: The input string with emoji characters replaced by emoji names.
 
     """
-
-    def replace(match: re.Match[str]) -> str:
-        emoji = match.group(0)
-        return f":{REVERSE_EMOJI_MAPPING[emoji]}:"
-
-    return EMOJI_CHARS_PATTERN.sub(replace, s)
+    return EMOJI_CHARS_PATTERN.sub(_reverse_replace, s)
 
 
 __all__ = (
