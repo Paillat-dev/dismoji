@@ -12,7 +12,9 @@ EMOJIS_PATH = Path(__file__).parent / "raw" / "build" / "emojis.json"
 with EMOJIS_PATH.open("r", encoding="utf-8") as f:
     EMOJIS = json.load(f)
 
-EMOJI_MAPPING: dict[str, str] = {k: EMOJIS["emojis"][v]["surrogates"] for k, v in EMOJIS["nameToEmoji"].items()}
+EMOJI_MAPPING: dict[str, str] = {
+    k: EMOJIS["emojis"][v]["surrogates"].replace("\ufe0f", "") for k, v in EMOJIS["nameToEmoji"].items()
+}
 
 # Create a reverse mapping for demojizing (emoji to name)
 REVERSE_EMOJI_MAPPING: dict[str, str] = {}
@@ -25,7 +27,7 @@ for emoji_index_str, emoji_index in sorted(EMOJIS["surrogateToEmoji"].items(), k
 
 del EMOJIS  # Clean up to save memory
 
-EMOJI_PATTERN = re.compile(r":([a-zA-Z0-9_-]+):")
+EMOJI_PATTERN = re.compile(r":([\w+-]+):")
 
 EMOJI_CHARS_PATTERN = re.compile("|".join(map(re.escape, REVERSE_EMOJI_MAPPING.keys())))
 
