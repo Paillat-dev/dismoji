@@ -5,7 +5,17 @@ from dismoji import EMOJI_MAPPING, REVERSE_EMOJI_MAPPING, demojize, emojize
 
 
 def are_equal(a: str, b: str) -> bool:
-    """Check if two emojis are equal."""
+    """Check if two emojis are equal.
+
+    Allows for comparing emojis with modifiers even when they are in different orders.
+
+    Args:
+        a (str): First emoji string.
+        b (str): Second emoji string.
+
+    Returns:
+        bool: True if the emojis are equal, False otherwise.
+    """
     if len(a) != len(b):
         return False
     if len(a) == 1:
