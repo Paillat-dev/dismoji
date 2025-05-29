@@ -20,7 +20,7 @@ for emoji_index_str, emoji_index in sorted(EMOJIS["surrogateToEmoji"].items(), k
     # Get the first name in the list as the preferred name
     e = EMOJIS["emojis"][emoji_index]
     # If it has multiple diversity parents, use the last name because it is the most specific one
-    # e.g. :handshake_light_skin_tone_dark_skin_tone: vs ::handshake_tone1_tone5:
+    # e.g. :handshake_light_skin_tone_dark_skin_tone: vs :handshake_tone1_tone5:
     REVERSE_EMOJI_MAPPING[emoji_index_str] = e["names"][-1 if e.get("hasMultiDiversityParent") else 0]
 
 del EMOJIS  # Clean up to save memory
