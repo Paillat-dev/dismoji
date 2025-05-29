@@ -1,7 +1,7 @@
 # Copyright (c) Paillat-dev
 # SPDX-License-Identifier: MIT
 
-from dismoji import emojize
+from dismoji import REVERSE_EMOJI_MAPPING, demojize, emojize
 
 
 def test_basic() -> None:
@@ -68,3 +68,42 @@ def test_emoji_with_special_characters() -> None:
     ]
     for input_str, expected_output in special_char_tests:
         assert emojize(input_str) == expected_output
+
+
+def test_demojize_basic() -> None:
+    """Test basic functionality of demojize function."""
+    assert demojize("Hello 😄") == "Hello :smile:"
+
+
+def test_demojize_no_match() -> None:
+    """Test demojize function with no matches."""
+    assert demojize("Hello world") == "Hello world"
+
+
+def test_demojize_multiple_emojis() -> None:
+    """Test demojize function with multiple emojis."""
+    assert demojize("😄 👋") == ":smile: :wave:"
+
+
+def test_demojize_complex_sentence() -> None:
+    """Test demojize function with a complex sentence."""
+    assert demojize("Hello 👋, what's up? 😄 ✅ 😄") == "Hello :wave:, what's up? :smile: :white_check_mark: :smile:"
+
+
+def test_demojize_surrogate() -> None:
+    """Test demojize function with surrogate pairs."""
+    surrogate_pairs = [
+        ("🫱🏻‍🫲🏿", ":handshake_light_skin_tone_dark_skin_tone:"),
+        ("🫱🏿‍🫲🏻", ":handshake_dark_skin_tone_light_skin_tone:"),
+        ("🫱🏽‍🫲🏻", ":handshake_medium_skin_tone_light_skin_tone:"),
+        ("🫱🏼‍🫲🏿", ":handshake_medium_light_skin_tone_dark_skin_tone:"),
+        ("🫱🏾‍🫲🏻", ":handshake_medium_dark_skin_tone_light_skin_tone:"),
+    ]
+
+    for surrogate, emoji_name in surrogate_pairs:
+        assert demojize(surrogate) == emoji_name
+
+
+def test_demojize_all() -> None:
+    for emoji, name in REVERSE_EMOJI_MAPPING.items():
+        assert demojize(emoji) == f":{name}:"
