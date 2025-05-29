@@ -66,3 +66,11 @@ def demojize(s: str) -> str:
 
     """
     return EMOJI_CHARS_PATTERN.sub(_reverse_replace, s)
+
+
+__all__ = (
+    "EMOJI_MAPPING",
+    "REVERSE_EMOJI_MAPPING",
+    "demojize",
+    "emojize",
+)
