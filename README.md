@@ -102,6 +102,10 @@ If you encounter issues or have questions about dismoji:
 - **HashiCorp Copywrite**: For managing license headers
 - **basedpyright**: For type checking
 
+## Acknowledgements
+
+- [`emoji`](https://pypi.org/project/emoji/) as inspiration for the API design
+
 ## License
 
 MIT License - Copyright (c) 2025 Paillat-dev
