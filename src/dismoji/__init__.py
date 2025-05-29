@@ -12,10 +12,13 @@ EMOJIS_PATH = Path(__file__).parent / "raw" / "build" / "emojis.json"
 with EMOJIS_PATH.open("r", encoding="utf-8") as f:
     EMOJIS = json.load(f)
 
-EMOJI_MAPPING: dict[str, str] = {k: EMOJIS["emojis"][v]["surrogates"] for k, v in EMOJIS["nameToEmoji"].items()}
+_VARIATION_SELECTOR = "\ufe0f"  # We remove this as it is not needed by discord and causes issues with tests
+EMOJI_MAPPING: dict[str, str] = {
+    k: EMOJIS["emojis"][v]["surrogates"].replace(_VARIATION_SELECTOR, "") for k, v in EMOJIS["nameToEmoji"].items()
+}
 
-# Create a reverse mapping for demojizing (emoji to name)
 REVERSE_EMOJI_MAPPING: dict[str, str] = {}
+
 for emoji_index_str, emoji_index in sorted(EMOJIS["surrogateToEmoji"].items(), key=lambda x: len(x[0]), reverse=True):
     # Get the first name in the list as the preferred name
     e = EMOJIS["emojis"][emoji_index]
@@ -23,9 +26,9 @@ for emoji_index_str, emoji_index in sorted(EMOJIS["surrogateToEmoji"].items(), k
     # e.g. :handshake_light_skin_tone_dark_skin_tone: vs :handshake_tone1_tone5:
     REVERSE_EMOJI_MAPPING[emoji_index_str] = e["names"][-1 if e.get("hasMultiDiversityParent") else 0]
 
-del EMOJIS  # Clean up to save memory
+del EMOJIS, _VARIATION_SELECTOR  # Clean up to save memory
 
-EMOJI_PATTERN = re.compile(r":([a-zA-Z0-9_-]+):")
+EMOJI_PATTERN = re.compile(r":([\w+-]+):")
 
 EMOJI_CHARS_PATTERN = re.compile("|".join(map(re.escape, REVERSE_EMOJI_MAPPING.keys())))
 

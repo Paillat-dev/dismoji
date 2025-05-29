@@ -1,7 +1,26 @@
 # Copyright (c) Paillat-dev
 # SPDX-License-Identifier: MIT
 
-from dismoji import REVERSE_EMOJI_MAPPING, demojize, emojize
+from dismoji import EMOJI_MAPPING, REVERSE_EMOJI_MAPPING, demojize, emojize
+
+
+def are_equal(a: str, b: str) -> bool:
+    """Check if two emojis are equal.
+
+    Allows for comparing emojis with modifiers even when they are in different orders.
+
+    Args:
+        a (str): First emoji string.
+        b (str): Second emoji string.
+
+    Returns:
+        bool: True if the emojis are equal, False otherwise.
+    """
+    if len(a) != len(b):
+        return False
+    if len(a) == 1:
+        return a == b
+    return a[0] == b[0] and set(a[1:]) == set(b[1:])
 
 
 def test_basic() -> None:
@@ -68,6 +87,11 @@ def test_emoji_with_special_characters() -> None:
     ]
     for input_str, expected_output in special_char_tests:
         assert emojize(input_str) == expected_output
+
+
+def test_emojize_all() -> None:
+    for name, emoji in EMOJI_MAPPING.items():
+        assert are_equal(emojize(f":{name}:"), emoji)
 
 
 def test_demojize_basic() -> None:
