@@ -7,7 +7,7 @@
   ],
   "git-submodules": {
     "enabled": true
-  }
+  },
   "forkProcessing": "enabled",
   "baseBranchPatterns": [
     "dev"
