@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright: 2025-2026 Paillat-dev
 [build-system]
 requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme"]
 build-backend = "hatchling.build"
@@ -82,7 +84,7 @@ include = [
     "src/dismoji/raw/build/emojis.json",
 ]
 exclude = [
-    ".copywrite.hcl",
+    "licensor-config.yaml",
     ".github",
     ".python-version",
     "uv.lock",

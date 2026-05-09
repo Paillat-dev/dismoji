@@ -10,10 +10,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-      - name: Setup Copywrite
-        uses: hashicorp/setup-copywrite@32638da2d4e81d56a0764aa1547882fc4d209636 # v1.1.3
+      - name: Setup licensor
+        uses: nicebots-xyz/licensor/.github/actions/setup-licensor@9b1b5450cb3d59e3f010a8203d696173aba3b564
+        with:
+          version: v0.0.5
       - name: Check Header Compliance
-        run: copywrite headers --plan --config .copywrite.hcl
+        run: licensor check "." --ignore ".*" --ignore ".*/**" --ignore "src/dismoji/raw/**"
   
   tests:
     name: Tests

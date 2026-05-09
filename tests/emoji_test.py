@@ -1,6 +1,5 @@
-# Copyright (c) Paillat-dev
 # SPDX-License-Identifier: MIT
-
+# Copyright: 2025-2026 Paillat-dev
 from dismoji import EMOJI_MAPPING, REVERSE_EMOJI_MAPPING, demojize, emojize
 
 
