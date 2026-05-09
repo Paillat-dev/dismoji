@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Setup licensor
         uses: nicebots-xyz/licensor/.github/actions/setup-licensor@9b1b5450cb3d59e3f010a8203d696173aba3b564
         with:
@@ -37,17 +37,17 @@ jobs:
             name: "Python 3.14"
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           submodules: true
 
       - name: "Set up Python"
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: "Setup PDM"
-        uses: pdm-project/setup-pdm@v4
+        uses: pdm-project/setup-pdm@94a823180e06fcde4ad29308721954a521c96ed0 # v4
         with:
           cache: true
           python-version: ${{ matrix.python-version }}
@@ -78,10 +78,10 @@ jobs:
     name: ${{ matrix.name }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - name: "Setup PDM"
-        uses: pdm-project/setup-pdm@v4
+        uses: pdm-project/setup-pdm@94a823180e06fcde4ad29308721954a521c96ed0 # v4
         with:
           cache: true
           python-version-file: "pyproject.toml"
