@@ -12,7 +12,6 @@ Copyright: 2025-2026 Paillat-dev
 ![PyPI - Types](https://img.shields.io/pypi/types/dismoji)
 ![PyPI - License](https://img.shields.io/pypi/l/dismoji)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Paillat-dev/dismoji/CI.yaml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Paillat-dev/dismoji/main.svg)](https://results.pre-commit.ci/latest/github/Paillat-dev/dismoji/main)
 
 <!-- end badges -->
 
