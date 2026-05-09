@@ -13,21 +13,17 @@ jobs:
         with:
           submodules: true
 
-      - name: "Install uv"
-        uses: astral-sh/setup-uv@v7
+      - name: "Setup PDM"
+        uses: pdm-project/setup-pdm@v4
         with:
-          enable-cache: true
-
-      - name: "Set up Python"
-        uses: actions/setup-python@v6
-        with:
+          cache: true
           python-version-file: "pyproject.toml"
 
       - name: Install dependencies
-        run: uv sync
+        run: pdm install --frozen-lockfile --group dev
 
       - name: Build
-        run: uv build
+        run: pdm build
 
       - name: Publish
-        run: uv publish
+        run: pdm publish
