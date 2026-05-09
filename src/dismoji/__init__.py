@@ -1,6 +1,5 @@
-# Copyright (c) Paillat-dev
 # SPDX-License-Identifier: MIT
-
+# Copyright: 2025-2026 Paillat-dev
 from __future__ import annotations
 
 import json

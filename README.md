@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MIT
+Copyright: 2025-2026 Paillat-dev
+-->
 <div align="center">
 <h1>dismoji</h1>
 
@@ -99,7 +103,7 @@ If you encounter issues or have questions about dismoji:
 
 - **uv**: For dependency management
 - **Ruff**: For linting and formatting
-- **HashiCorp Copywrite**: For managing license headers
+- **Licensor**: For managing license headers
 - **basedpyright**: For type checking
 
 ## Acknowledgements
