@@ -87,7 +87,7 @@ exclude = [
     "licensor-config.yaml",
     ".github",
     ".python-version",
-    "uv.lock",
+    "pdm.lock",
     "src/dismoji/raw/*.*",
     "src/dismoji/raw/.*/",
     "src/dismoji/raw/src/"
@@ -101,6 +101,8 @@ pythonVersion = "3.10"
 typeCheckingMode = "all"
 reportUnusedCallResult = false
 reportAny = false
+include = ["src/dismoji", "tests"]
+exclude = ["src/dismoji/raw"]
 executionEnvironments = [
     { root = "src/dismoji/_version.py", reportDeprecated = false },
     { root = "examples", reportExplicitAny = false, reportUnknownMemberType = false, reportUnusedParameter = false, reportImplicitOverride = false }
@@ -110,6 +112,13 @@ executionEnvironments = [
 target-version = "py310"
 line-length = 120
 indent-width = 4
+exclude = [
+    "src/dismoji/_version.py",
+]
+extend-exclude = [
+    "src/dismoji/raw",
+]
+force-exclude = true
 
 [tool.ruff.format]
 quote-style = "double"
@@ -118,9 +127,6 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 docstring-code-format = false
 docstring-code-line-length = "dynamic"
-exclude = [
-    "src/dismoji/_version.py"
-]
 
 
 [tool.ruff.lint]
@@ -156,5 +162,11 @@ extend-ignore = [
 ]
 pydocstyle.convention = "google"
 
-[tool.uv.sources]
-py-cord = { git = "https://github.com/Pycord-Development/pycord", rev = "c0c0b7c58f7b489983a159f5e0eea2c0dab0b0c8" }
+[tool.pdm]
+distribution = true
+
+[tool.pdm.scripts]
+test = "pytest ./tests"
+format = "ruff format --check ."
+lint = "ruff check ."
+typecheck = "basedpyright src/dismoji tests"

@@ -95,13 +95,14 @@ If you encounter issues or have questions about dismoji:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Run linter, formatter and type checker: `ruff check .`, `ruff format .`,
-   `basedpyright .`
-5. Submit a pull request
+4. Install development dependencies: `pdm install -G dev`
+5. Run checks: `pdm run lint`, `pdm run format`, `pdm run typecheck`
+6. Run tests: `pdm run test`
+7. Submit a pull request
 
 **Development Tools**:
 
-- **uv**: For dependency management
+- **PDM**: For dependency management
 - **Ruff**: For linting and formatting
 - **Licensor**: For managing license headers
 - **basedpyright**: For type checking
