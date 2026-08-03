@@ -158,7 +158,8 @@ extend-ignore = [
     "PLR2004",
     "PLR0913",
     "C901",
-    "ISC003" # conflicts with basedpyright reportImplicitStringConcatenation
+    "ISC003", # conflicts with basedpyright reportImplicitStringConcatenation
+    "CPY001" # Managed by licensor
 ]
 pydocstyle.convention = "google"
 
