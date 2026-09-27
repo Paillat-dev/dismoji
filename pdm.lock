@@ -8,7 +8,7 @@ lock_version = "4.5.1"
 content_hash = "sha256:c66dd094208d42793fc2444bfdffa56a130934571264a266931790b522398825"
 
 [[metadata.targets]]
-requires_python = ">=3.11,<3.15"
+requires_python = ">=3.11,<3.16"
 
 [[package]]
 name = "basedpyright"
@@ -16,7 +16,6 @@ version = "1.40.1"
 requires_python = ">=3.10"
 summary = "static type checking for Python (but based)"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 dependencies = [
     "nodejs-wheel-binaries>=20.13.1",
 ]
@@ -31,7 +30,7 @@ version = "0.4.6"
 requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 summary = "Cross-platform colored terminal text."
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\" and sys_platform == \"win32\""
+marker = "sys_platform == \"win32\""
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -43,7 +42,6 @@ version = "2.3.0"
 requires_python = ">=3.10"
 summary = "brain-dead simple config-ini parsing"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 files = [
     {file = "iniconfig-2.3.0-py3-none-any.whl", hash = "sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12"},
     {file = "iniconfig-2.3.0.tar.gz", hash = "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730"},
@@ -55,7 +53,6 @@ version = "24.19.0"
 requires_python = ">=3.7"
 summary = "unoffical Node.js package"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 dependencies = [
     "typing-extensions; python_version < \"3.8\"",
 ]
@@ -77,7 +74,6 @@ version = "26.3"
 requires_python = ">=3.9"
 summary = "Core utilities for Python packages"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 files = [
     {file = "packaging-26.3-py3-none-any.whl", hash = "sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"},
     {file = "packaging-26.3.tar.gz", hash = "sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79"},
@@ -89,7 +85,6 @@ version = "1.6.0"
 requires_python = ">=3.9"
 summary = "plugin and hook calling mechanisms for python"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 files = [
     {file = "pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746"},
     {file = "pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3"},
@@ -101,7 +96,6 @@ version = "2.21.0"
 requires_python = ">=3.9"
 summary = "Pygments is a syntax highlighting package written in Python."
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 files = [
     {file = "pygments-2.21.0-py3-none-any.whl", hash = "sha256:2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"},
     {file = "pygments-2.21.0.tar.gz", hash = "sha256:610ca751c9bc2492b38eb9a38a7fbc93edbbb2d7182edaf34e66ae493dee5c8c"},
@@ -113,7 +107,6 @@ version = "9.1.1"
 requires_python = ">=3.10"
 summary = "pytest: simple powerful testing with Python"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 dependencies = [
     "colorama>=0.4; sys_platform == \"win32\"",
     "exceptiongroup>=1; python_version < \"3.11\"",
@@ -134,7 +127,6 @@ version = "1.2.3"
 requires_python = ">=3.10"
 summary = "Read key-value pairs from a .env file and set them as environment variables"
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 files = [
     {file = "python_dotenv-1.2.3-py3-none-any.whl", hash = "sha256:904552145e8bfed22162c09dab1c2b9b54fefa7b23ba780f4f26ca0316b0f0d9"},
     {file = "python_dotenv-1.2.3.tar.gz", hash = "sha256:a20a594dabeaa385725aa239d5244871c143ecb356add8a20fcf23773a6c3a35"},
@@ -146,7 +138,6 @@ version = "0.16.9"
 requires_python = ">=3.7"
 summary = "An extremely fast Python linter and code formatter, written in Rust."
 groups = ["dev"]
-marker = "python_version >= \"3.11\" and python_version < \"3.15\""
 files = [
     {file = "ruff-0.16.9-py3-none-linux_armv6l.whl", hash = "sha256:95e6f022090368ab3b824c36276839c53b2adf1a3f4c09fefc33dfc400f6da96"},
     {file = "ruff-0.16.9-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:a5f27be168556594a86d2f415db0cf43f5291917849318f873c7e2791f7a8c67"},
