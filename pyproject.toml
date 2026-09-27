@@ -12,17 +12,17 @@ authors = [
     { name = "Paillat-dev", email = "me@paillat.dev" }
 ]
 license = "MIT"
-requires-python = ">=3.10,<3.15"
+requires-python = ">=3.11,<3.16"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.15",
     "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.10",
     "Typing :: Typed",
     "Operating System :: OS Independent",
 ]
@@ -97,7 +97,7 @@ exclude = [
 packages = ["src/dismoji"]
 
 [tool.pyright]
-pythonVersion = "3.10"
+pythonVersion = "3.11"
 typeCheckingMode = "all"
 reportUnusedCallResult = false
 reportAny = false
@@ -109,7 +109,7 @@ executionEnvironments = [
 ]
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py311"
 line-length = 120
 indent-width = 4
 exclude = [
